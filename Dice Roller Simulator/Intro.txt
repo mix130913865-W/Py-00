@@ -1,0 +1,8 @@
+# Dice Roller Simulator
+# ---------------------
+# A simple program that simulates rolling a dice using Python.
+# Features:
+# - Uses random.randint() to generate a number between 1 and 6
+# - Prints the result each time the user chooses to roll
+# - Loops until the user decides to quit
+# - Easy to run in any terminal
