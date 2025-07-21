@@ -1,16 +1,16 @@
 while True:
     try:
-        input1 = int(input('輸入一個數字，判斷是否為質數。'))
+        input1 = int(input('Check if a number is a prime number: '))
         if input1 < 2:
-            print('非質數')
+            print('Not prime')
         elif input1 == 2:
-            print('質數')
+            print('prime')
         else:
             for number in range(2,input1):
                 if input1 % number == 0:
-                    print('非質數')
+                    print('Not prime')
                     break
             else:
-                print('質數')
+                print('prime')
     except ValueError:
         print("Invalid input. Please enter a valid number.")
