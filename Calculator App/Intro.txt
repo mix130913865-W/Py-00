@@ -1,8 +1,0 @@
-# Calculator App (Tkinter GUI)
-# -----------------------------
-# A basic GUI calculator built with Python's Tkinter library.
-# Features:
-# - Perform addition, subtraction, multiplication, and division
-# - Clear (C) button to reset input
-# - Displays current expression and result dynamically
-# - Simple and intuitive grid layout for buttons

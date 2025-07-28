@@ -1,8 +1,0 @@
-# To-Do List (CLI)
-# ---------------------
-# A simple command-line to-do list application written in Python.
-# Features:
-# - Add, view, and remove tasks
-# - Tasks are stored in a text file ("tasks.txt") so they persist between runs
-# - Uses basic file I/O and lists
-# - Easy to run and modify

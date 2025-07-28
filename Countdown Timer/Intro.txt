@@ -1,8 +1,0 @@
-# Countdown Timer
-# ---------------------
-# A simple countdown timer that runs in the terminal.
-# Features:
-# - User sets a time in seconds
-# - Counts down one second at a time
-# - Prints "Time's up!" when the countdown reaches zero
-# - Uses time.sleep() for accurate timing

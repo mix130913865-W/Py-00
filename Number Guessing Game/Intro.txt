@@ -1,7 +1,0 @@
-# Number Guessing Game
-# --------------------
-# A simple terminal game where the program selects a random number.
-# Features:
-# - User tries to guess the number between 1 and 100
-# - Provides feedback if the guess is too high or too low
-# - Counts the number of attempts taken to guess correctly
