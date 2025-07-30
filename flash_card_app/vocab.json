@@ -1,0 +1,98 @@
+[
+  {
+    "question": "abandon",
+    "correct": "放棄"
+  },
+  {
+    "question": "beneficial",
+    "correct": "有益的"
+  },
+  {
+    "question": "complex",
+    "correct": "複雜的"
+  },
+  {
+    "question": "derive",
+    "correct": "獲得"
+  },
+  {
+    "question": "efficient",
+    "correct": "有效率的"
+  },
+  {
+    "question": "fluctuate",
+    "correct": "波動"
+  },
+  {
+    "question": "generate",
+    "correct": "產生"
+  },
+  {
+    "question": "highlight",
+    "correct": "強調"
+  },
+  {
+    "question": "imply",
+    "correct": "暗示"
+  },
+  {
+    "question": "justify",
+    "correct": "證明…是正當的"
+  },
+{
+    "question": "knowledgeable",
+    "correct": "博學的"
+  },
+  {
+    "question": "leverage",
+    "correct": "利用"
+  },
+  {
+    "question": "modify",
+    "correct": "修改"
+  },
+  {
+    "question": "navigate",
+    "correct": "導航"
+  },
+  {
+    "question": "optimize",
+    "correct": "優化"
+  },
+  {
+    "question": "perceive",
+    "correct": "感知"
+  },
+  {
+    "question": "quantify",
+    "correct": "量化"
+  },
+  {
+    "question": "relevant",
+    "correct": "相關的"
+  },
+  {
+    "question": "sustain",
+    "correct": "維持"
+  },
+  {
+    "question": "transform",
+    "correct": "轉變"
+  },
+{
+    "question": "utilize",
+    "correct": "利用"
+  },
+  {
+    "question": "validate",
+    "correct": "驗證"
+  },
+  {
+    "question": "warrant",
+    "correct": "保證"
+  },
+  {
+    "question": "yield",
+    "correct": "產出"
+  }
+]
