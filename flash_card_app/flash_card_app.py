@@ -31,6 +31,11 @@ for item in vocab_list:
 
     while True:
         user_input = input("請輸入答案(A/B/C/D)：").strip().upper()
+
+        if user_input == 'Q':
+            print("退出練習")
+            exit()
+            
         if user_input not in ['A', 'B', 'C', 'D']:
             print("請輸入有效的選項(A/B/C/D)\n")
             continue
