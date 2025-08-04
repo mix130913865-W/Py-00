@@ -15,7 +15,7 @@ def generate_qr(data, filename='qrcode.png'):
     # Create the QR code image with color settings
     img = qr.make_image(fill_color="black", back_color="white")
     img.save(filename)  # Save the image to a file
-    print(f"✅ QR Code saved successfully! Filename: {filename}")
+    print(f"QR Code saved successfully! Filename: {filename}")
 
 # Run this part only when executing the script directly (not when importing)
 if __name__ == "__main__":

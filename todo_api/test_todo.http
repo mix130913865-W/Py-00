@@ -1,0 +1,23 @@
+### 取得所有 Todo
+GET http://127.0.0.1:5000/todos
+
+### 新增一筆 Todo
+POST http://127.0.0.1:5000/todos
+Content-Type: application/json
+
+{
+  "title": "你好"
+}
+
+
+### 更新 id=1 的 Todo 為已完成
+PUT http://127.0.0.1:5000/todos/1
+Content-Type: application/json
+
+{
+  "completed": true
+}
+
+
+### 刪除 id=1 的 Todo
+DELETE http://127.0.0.1:5000/todos/1
