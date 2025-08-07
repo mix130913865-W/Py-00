@@ -15,14 +15,14 @@ def receive():
     while True:
         try:
             message = client.recv(1024).decode('utf-8')  # 收 server 傳來的訊息
-            if message == "請輸入你的名稱：":
+            if message == "Please enter your name：":
                 # 如果 server 要求輸入名稱，就從使用者那邊取得並傳送
                 client.send(input(message).encode('utf-8'))
             else:
                 print(message)  # 其他訊息就顯示出來
         except:
             # 如果無法連線，印出錯誤並關閉
-            print("伺服器中斷連線")
+            print("server disconnected")
             client.close()
             break
 
@@ -33,7 +33,7 @@ def write():
     while True:
         message = input('')           # 取得使用者輸入
         client.send(message.encode('utf-8'))  # 傳給 server
-        print(f"你: {message}")
+        print(f"You: {message}")
 
 
 # 啟動收訊息的 thread
