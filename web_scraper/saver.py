@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import json  # 載入 Python 內建的 JSON 模組，用來處理 JSON 格式資料
 
 
@@ -21,3 +22,17 @@ def save_as_json(data: list[dict], filename: str):
         json.dump(data, f, ensure_ascii=False, indent=2)
         # 完成後，檔案會自動關閉，因為使用了 with 語句
         # 這樣可以確保即使發生錯誤，檔案也會正確關閉
+=======
+import json
+
+def save_as_json(data: list[dict], filename: str):
+    """
+    Save a list of dictionaries into a JSON file with UTF-8 encoding and pretty formatting.
+
+    Args:
+        data (list[dict]): The data to be saved (e.g., list of books with titles and prices).
+        filename (str): The output JSON file name (including path if needed).
+    """
+    with open(filename, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+>>>>>>> 0e49055998e4f92cb86e41772ef16fe0cbe824d8
