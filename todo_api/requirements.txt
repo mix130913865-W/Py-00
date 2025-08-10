@@ -1,0 +1,2 @@
+Flask==2.3.2
+# VSCode 擴充套件：REST Client

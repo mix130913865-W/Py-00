@@ -1,10 +1,7 @@
-import shutil
-from pathlib import Path  # 利用Path簡潔處理檔案路徑
+import shutil  # 操作檔案搬移
+from pathlib import Path  # 路徑處理
 
-# 取得使用者電腦的 Downloads 資料夾路徑
-DOWNLOADS_DIR = Path(r"C:\Users\Russell_Wang\Downloads")
-
-# 定義各種副檔名的對應資料夾分類
+# 定義一個字典，包含各類檔案的副檔名分類
 FILE_TYPES = {
     "Images": [".jpg", ".jpeg", ".png", ".gif", ".bmp"],
     "Documents": [".pdf", ".docx", ".txt", ".xlsx", ".pptx"],
@@ -13,38 +10,24 @@ FILE_TYPES = {
     "Archives": [".zip", ".rar", ".7z", ".tar", ".gz"],
     "Scripts": [".py", ".sh", ".bat", ".js"],
     "Installers": [".exe", ".dmg", ".pkg", ".msi"],
-    "Others": []  # 落單沒分類到的就放這
+    "Others": []
 }
 
-# 主架構：整理檔案
 
-
-def organize_files():
-    # 遍歷 Downloads 裡的所有項目
-    for file in DOWNLOADS_DIR.iterdir():
-        if file.is_file():  # 如果是檔案（排除資料夾）
-            moved = False  # 先預設「尚未移動」
-            # 對每一組分類規則進行比對
-            for folder_name, extensions in FILE_TYPES.items():
-                # 如果副檔名有符合
-                if file.suffix.lower() in extensions:
-                    target_folder = DOWNLOADS_DIR / folder_name  # 建立目標資料夾路徑
-                    target_folder.mkdir(exist_ok=True)  # 如果資料夾不存在就建立
+def organize_files(downloads_dir: Path, file_types: dict = FILE_TYPES):
+    for file in downloads_dir.iterdir():  # 讀取資料夾裡每個檔案或資料夾
+        if file.is_file():  # 只處理檔案，不管資料夾
+            moved = False  # 標記是否已搬移
+            for folder_name, extensions in file_types.items():  # 遍歷分類
+                if file.suffix.lower() in extensions:  # 符合副檔名分類
+                    target_folder = downloads_dir / folder_name  # 目標資料夾路徑
+                    target_folder.mkdir(exist_ok=True)  # 若資料夾不存在就創建
                     shutil.move(str(file), str(
                         target_folder / file.name))  # 移動檔案
-                    moved = True
-                    break  # 已經分類成功就跳出迴圈
-
-            # 如果都沒分類到，就歸到 "Others"
-            if not moved:
-                others_folder = DOWNLOADS_DIR / "Others"
-                others_folder.mkdir(exist_ok=True)
+                    moved = True  # 標記已搬移
+                    break  # 跳出分類判斷
+            if not moved:  # 如果沒分類成功，放進 Others 資料夾
+                others_folder = downloads_dir / "Others"  # Others 資料夾路徑
+                others_folder.mkdir(exist_ok=True)  # 確保 Others 資料夾存在
+                # 移動到 Others 資料夾
                 shutil.move(str(file), str(others_folder / file.name))
-
-
-# 當程式直接執行時，執行 organize_files()
-if __name__ == "__main__":
-    organize_files()
-    print("Downloads 資料夾已整理完畢！")
-# 這段程式碼會自動整理使用者的 Downloads 資料夾，將檔案依照副檔名分類到不同的資料夾中。
-# 如果有新的檔案類型，可以在 FILE_TYPES 字典中新增對應的分類。
