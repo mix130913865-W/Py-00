@@ -6,27 +6,20 @@ routes.py
 回傳 JSON 結果給客戶端
 """
 
-<<<<<<< HEAD
-from flask import Blueprint, request, jsonify  # 匯入 Flask 的 Blueprint（模組化路由）、request（請求資料）、jsonify（回傳 JSON）
+# 匯入 Flask 的 Blueprint（模組化路由）、request（請求資料）、jsonify（回傳 JSON）
+from flask import Blueprint, request, jsonify
 import models  # 匯入自己寫的 models 模組，裡面負責資料操作
 
 bp = Blueprint('todos', __name__)  # 建立 Blueprint 實例，命名為 'todos'，方便將來註冊路由
 
+
 @bp.route('/')  # 設定路由，當前綴網址為 '/'，GET 請求時會觸發此函式
-=======
-from flask import Blueprint, request, jsonify
-import models
-
-bp = Blueprint('todos', __name__)    # 建立 Blueprint，方便模組化路由
-
-@bp.route('/')
->>>>>>> 0e49055998e4f92cb86e41772ef16fe0cbe824d8
 def home():
     """
     測試用首頁路由，回傳簡單 JSON 訊息
     """
-<<<<<<< HEAD
     return jsonify({'message': 'Hello123'})  # 回傳一個字典轉成 JSON，內容是訊息 "Hello123"
+
 
 @bp.route('/todos', methods=['GET'])  # 定義 GET 方法，路由為 '/todos'
 def get_todos():
@@ -36,6 +29,7 @@ def get_todos():
     todos = models.get_all_todos()  # 呼叫 models.get_all_todos() 函式取得全部 todo 項目
     return jsonify(todos), 200  # 回傳 todo 清單 JSON，HTTP 狀態碼 200（成功）
 
+
 @bp.route('/todos', methods=['POST'])  # 定義 POST 方法，路由為 '/todos'
 def create_todo():
     """
@@ -43,11 +37,15 @@ def create_todo():
     """
     data = request.get_json()  # 從請求中取得 JSON 格式資料，轉成 Python 字典
     if not data or 'title' not in data:  # 如果資料不存在或沒有 title 欄位
-        return jsonify({'error': 'Missing title'}), 400  # 回傳錯誤訊息 JSON，狀態碼 400（壞請求）
-    todo = models.add_todo(data['title'])  # 呼叫 models.add_todo，傳入 title，新增 todo 項目
+        # 回傳錯誤訊息 JSON，狀態碼 400（壞請求）
+        return jsonify({'error': 'Missing title'}), 400
+    # 呼叫 models.add_todo，傳入 title，新增 todo 項目
+    todo = models.add_todo(data['title'])
     return jsonify(todo), 201  # 回傳新增的 todo JSON，狀態碼 201（已建立）
 
-@bp.route('/todos/<int:todo_id>', methods=['PUT'])  # 定義 PUT 方法，路由包含 todo_id 參數（整數）
+
+# 定義 PUT 方法，路由包含 todo_id 參數（整數）
+@bp.route('/todos/<int:todo_id>', methods=['PUT'])
 def update_todo(todo_id):
     """
     更新指定 todo_id 的 todo
@@ -60,67 +58,19 @@ def update_todo(todo_id):
     )
     if todo:  # 如果更新成功，todo 不為 None
         return jsonify(todo), 200  # 回傳更新後的 todo JSON，狀態碼 200（成功）
-    return jsonify({'error': 'Todo not found'}), 404  # 找不到該 todo，回傳錯誤 JSON，狀態碼 404（找不到）
+    # 找不到該 todo，回傳錯誤 JSON，狀態碼 404（找不到）
+    return jsonify({'error': 'Todo not found'}), 404
 
-@bp.route('/todos/<int:todo_id>', methods=['DELETE'])  # 定義 DELETE 方法，路由包含 todo_id 參數（整數）
+
+# 定義 DELETE 方法，路由包含 todo_id 參數（整數）
+@bp.route('/todos/<int:todo_id>', methods=['DELETE'])
 def delete_todo(todo_id):
     """
     刪除指定 todo_id 的 todo
     """
     success = models.delete_todo(todo_id)  # 呼叫刪除函式，傳入 todo_id，回傳是否成功
     if success:  # 如果刪除成功
-        return jsonify({'message': f'Todo {todo_id} deleted'}), 200  # 回傳刪除成功訊息 JSON，狀態碼 200
-    return jsonify({'error': 'Todo not found'}), 404  # 找不到該 todo，回傳錯誤 JSON，狀態碼 404
-=======
-    return jsonify({'message': 'Hello123'})
-
-@bp.route('/todos', methods=['GET'])
-def get_todos():
-    """
-    取得所有 todo
-    回傳格式：JSON 陣列，HTTP 狀態碼 200
-    """
-    todos = models.get_all_todos()
-    return jsonify(todos), 200
-
-@bp.route('/todos', methods=['POST'])
-def create_todo():
-    """
-    新增一筆 todo
-    從 request JSON 取 title，缺少回 400
-    回傳新增的 todo 與狀態碼 201
-    """
-    data = request.get_json()
-    if not data or 'title' not in data:
-        return jsonify({'error': 'Missing title'}), 400
-    todo = models.add_todo(data['title'])
-    return jsonify(todo), 201
-
-@bp.route('/todos/<int:todo_id>', methods=['PUT'])
-def update_todo(todo_id):
-    """
-    更新指定 todo_id 的 todo
-    取 request JSON 裡的 title 和 completed 欄位
-    找到回傳更新後的 todo，找不到回 404
-    """
-    data = request.get_json()
-    todo = models.update_todo(
-        todo_id,
-        title=data.get('title'),
-        completed=data.get('completed')
-    )
-    if todo:
-        return jsonify(todo), 200
-    return jsonify({'error': 'Todo not found'}), 404
-
-@bp.route('/todos/<int:todo_id>', methods=['DELETE'])
-def delete_todo(todo_id):
-    """
-    刪除指定 todo_id 的 todo
-    刪除成功回訊息與 200，找不到回 404
-    """
-    success = models.delete_todo(todo_id)
-    if success:
+        # 回傳刪除成功訊息 JSON，狀態碼 200
         return jsonify({'message': f'Todo {todo_id} deleted'}), 200
+    # 找不到該 todo，回傳錯誤 JSON，狀態碼 404
     return jsonify({'error': 'Todo not found'}), 404
->>>>>>> 0e49055998e4f92cb86e41772ef16fe0cbe824d8

@@ -4,7 +4,7 @@ from pathlib import Path  # 從 pathlib 模組引入 Path 類別，方便操作�
 
 # 取得當前程式檔案所在的目錄路徑，Path(__file__) 是目前程式檔案的路徑
 # .parent 則取得該檔案的上層資料夾路徑，方便用相對路徑存取檔案
-base_path = Path(__file__).parent  
+base_path = Path(__file__).parent
 
 
 def load_json(filename):

@@ -1,5 +1,5 @@
 # gui.py
-import tkinter as tk # 引入 tkinter 模組
+import tkinter as tk  # 引入 tkinter 模組
 from logic import evaluate_expression  # 引入運算模組
 
 

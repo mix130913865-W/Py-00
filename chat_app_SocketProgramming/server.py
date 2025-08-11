@@ -36,7 +36,8 @@ def handle_client(client):  # 處理每個 client 的訊息
                     name = names[index]  # 找到對應的名稱
                     clients.remove(client)  # 如果 client 關閉連線，從列表中移除
                     names.remove(name)  # 同時也從名稱列表中移除
-                    broadcast(f'{name} has left the chat room.'.encode('utf-8'))  # 廣播離開訊息
+                    broadcast(f'{name} has left the chat room.'.encode(
+                        'utf-8'))  # 廣播離開訊息
                 client.close()  # 關閉 client socket
                 break
             index = clients.index(client)  # 找到這個 client 在列表中的位置
@@ -51,7 +52,8 @@ def handle_client(client):  # 處理每個 client 的訊息
                 name = names[index]
                 clients.remove(client)
                 names.remove(name)
-                broadcast(f"{name} has left the chat room.".encode('utf-8'), sender_client=None)
+                broadcast(f"{name} has left the chat room.".encode(
+                    'utf-8'), sender_client=None)
             client.close()
             break
 
@@ -72,7 +74,8 @@ def receive():
 
         print(f"{name} has joined the chatting room")
         broadcast(f"{name} 加入聊天室！".encode('utf-8'))
-        client.send("You have successfully joined the chat room.\nenter your message:".encode('utf-8'))
+        client.send(
+            "You have successfully joined the chat room.\nenter your message:".encode('utf-8'))
 
         # 每個 client 各自用一個 thread 處理訊息
         thread = threading.Thread(target=handle_client, args=(client,))

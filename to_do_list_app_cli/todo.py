@@ -1,8 +1,10 @@
 from file_ops import load_tasks, save_tasks  # 引入檔案操作模組的函式
 
+
 def get_tasks():
     # 取得目前所有任務列表（從檔案讀取）
     return load_tasks()
+
 
 def add_task(task):
     # 將新任務字串加進清單並儲存
@@ -13,6 +15,7 @@ def add_task(task):
     tasks.append(task.strip())  # 去除首尾空白後加入任務清單
     save_tasks(tasks)  # 將更新後清單寫回檔案
     return True  # 成功加入任務回傳True
+
 
 def remove_task(index):
     # 根據使用者輸入的序號刪除任務（序號從1開始）

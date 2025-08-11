@@ -1,10 +1,13 @@
 import qrcode  # Import the qrcode library to generate QR codes
 
+
 def generate_qr(data, filename='qrcode.png'):
     # Create a QRCode object with configuration
     qr = qrcode.QRCode(
-        version=1,  # Controls the size of the QR code (1 to 40). Version 1 is the smallest.
-        error_correction=qrcode.constants.ERROR_CORRECT_L,  # Error correction level L (up to 7% error can be corrected)
+        # Controls the size of the QR code (1 to 40). Version 1 is the smallest.
+        version=1,
+        # Error correction level L (up to 7% error can be corrected)
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
         box_size=10,  # Size of each individual box (pixel size)
         border=4,  # Width of the border (measured in box_size units)
     )
@@ -16,6 +19,7 @@ def generate_qr(data, filename='qrcode.png'):
     img = qr.make_image(fill_color="black", back_color="white")
     img.save(filename)  # Save the image to a file
     print(f"QR Code saved successfully! Filename: {filename}")
+
 
 # Run this part only when executing the script directly (not when importing)
 if __name__ == "__main__":

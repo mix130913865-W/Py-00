@@ -1,6 +1,7 @@
 from fetcher import fetch_weather_json  # 匯入取得天氣 JSON 資料的函式
 from parser import parse_weather_data   # 匯入解析天氣 JSON 的函式
 
+
 def display_weather_info(info: dict):
     """
     美化輸出天氣資訊到終端機。
@@ -25,6 +26,7 @@ def display_weather_info(info: dict):
     # 印出風速，單位公尺/秒
     print(f"Wind Speed: {info['wind_speed']} m/s")
 
+
 def main():
     # 請使用者輸入想查詢的城市名稱
     city = input("Enter city name: ")
@@ -41,6 +43,7 @@ def main():
     else:
         # 如果失敗，印出警告訊息
         print("Warning: Failed to get weather data. Please check the city name.")
+
 
 # 如果此檔案是主程式執行，呼叫 main 函式
 if __name__ == "__main__":

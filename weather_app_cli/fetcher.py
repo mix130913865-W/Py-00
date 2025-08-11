@@ -3,6 +3,7 @@ import requests  # 引入 requests 模組，用來發送 HTTP 請求
 # OpenWeatherMap API 金鑰（如果要用自己的，記得替換這裡）
 API_KEY = "a7aed2194e1f40e6f487d88b749d29d0"
 
+
 def fetch_weather_json(city_name: str) -> dict | None:
     """
     根據指定城市名稱，從 OpenWeatherMap API 取得天氣資料 JSON。
